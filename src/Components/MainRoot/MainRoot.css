@@ -1,0 +1,116 @@
+.main-root {
+  /* max-width: 900px; */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.error-message {
+  font-size: 1.5rem;
+  color: #ff0000;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+}
+
+.search-bar {
+  width: 50%;
+  margin: 20px auto 0 auto;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.pagination-buttons button.active,
+.pagination-buttons button:hover {
+  background-color: blue;
+}
+
+.pagination-pages {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 7px;
+}
+
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-buttons button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 20px;
+}
+
+.pagination-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 991px) {
+  .main-root {
+    padding: 10px;
+  }
+
+  .search-bar {
+    width: 70%;
+    margin: 10px auto 0 auto;
+    margin-left: 10px;
+    margin-top: 25px;
+  }
+
+  .pagination-buttons button {
+    padding: 3px 6px;
+    margin: 0 2px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-root {
+    padding: 5px;
+  }
+
+  .search-bar {
+    width: 90%;
+    margin: 5px auto 0 auto;
+    margin-left: 2px;
+    margin-top: 23px;
+  }
+
+  .pagination-buttons {
+    align-items: center;
+  }
+
+  .pagination-buttons button {
+    padding: 3px 6px;
+    margin: 2px 0;
+  }
+}
