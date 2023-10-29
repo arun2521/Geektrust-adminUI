@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { RiDeleteBin2Fill } from "react-icons/ri";
-import { FaEdit } from "react-icons/fa";
 import "../UserTable/UserTable.css";
+import UserRow from "./UserRow";
 
 export default function UserTable({
   users,
@@ -12,7 +11,7 @@ export default function UserTable({
 }) {
   const [selectedRows, setSelectedRows] = useState([]);
 
-  let itemsPerPage = 10;
+  const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedUsers = users.slice(startIndex, endIndex);
@@ -92,27 +91,14 @@ export default function UserTable({
         </thead>
         <tbody>
           {displayedUsers.map((user, index) => (
-            <tr
-              className={`table-row ${
-                selectedRows.includes(user.id) ? "selected-row" : ""
-              }`}
+            <UserRow
               key={user.id}
-            >
-              <td>
-                <input
-                  type="checkbox"
-                  checked={selectedRows.includes(user.id)}
-                  onChange={(event) => handleRowSelect(event, user.id)}
-                />
-              </td>
-              <td className="item-name">{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td className="action-items">
-                <FaEdit onClick={() => handleEdit(user)} />
-                <RiDeleteBin2Fill onClick={() => handleDelete(user.id)} />
-              </td>
-            </tr>
+              user={user}
+              selected={selectedRows.includes(user.id)}
+              handleRowSelect={handleRowSelect}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
           ))}
         </tbody>
       </table>

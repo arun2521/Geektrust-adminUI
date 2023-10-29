@@ -18,25 +18,28 @@ export default function MainRoot() {
 
   let itemsPerPage = 10;
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${config.backendEndpoint}`);
+      const data = response.data;
+      // console.log(data);
+      setUsers(data);
+      setTotalPages(Math.ceil(data.length / itemsPerPage));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setDataLoaded(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${config.backendEndpoint}`);
-        const data = response.data;
-        // console.log(data);
-        setUsers(data);
-        setTotalPages(Math.ceil(data.length / itemsPerPage));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setDataLoaded(false);
-      }
-    };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     // Update the total pages whenever the search results change
     setTotalPages(Math.ceil(users.length / itemsPerPage));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [users]);
 
   const handleSearch = (searchTerm) => {
@@ -75,7 +78,7 @@ export default function MainRoot() {
 
   // Filter the users based on search term
   const filteredUsers = users.filter((user) => {
-    const searchTermLower = searchTerm.toLowerCase();
+    const searchTermLower = searchTerm.trim().toLowerCase();
     return (
       user.name.toLowerCase().includes(searchTermLower) ||
       user.email.toLowerCase().includes(searchTermLower) ||

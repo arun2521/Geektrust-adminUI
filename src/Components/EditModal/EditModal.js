@@ -5,6 +5,8 @@ export default function EditModal({ user, onClose, onSave }) {
   const [editingUser, setEditingUser] = useState({ ...user });
   const [formValid, setFormValid] = useState(true);
 
+  const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditingUser((prevUser) => ({ ...prevUser, [name]: value }));
@@ -20,7 +22,7 @@ export default function EditModal({ user, onClose, onSave }) {
   const isFormValid = () => {
     const { name, email, role } = editingUser;
     const isValid =
-      name.trim() !== "" && email.trim() !== "" && role.trim() !== "";
+      name.trim() !== "" && role.trim() !== "" && emailPattern.test(email);
     setFormValid(isValid);
     return isValid;
   };

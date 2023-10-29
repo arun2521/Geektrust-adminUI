@@ -46,9 +46,11 @@ table input[type="checkbox"] {
 }
 
 .action-items {
+  /* margin-right: 20px; */
   cursor: pointer;
   display: flex;
-  gap: 14px;
+  justify-content: space-around;
+  /* gap: 14px; */
 }
 
 .listing-table-container {
@@ -72,9 +74,21 @@ table input[type="checkbox"] {
   }
 
   table {
-    font-size: 12px;
+    font-size: 11px;
     margin-top: 20px;
-    margin-left: -10px;
+    /* margin-left: -10px; */
+  }
+
+  .user-deleteAll {
+    align-self: flex-start;
+    background-color: rgb(211, 6, 6);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 20px;
   }
 }
 

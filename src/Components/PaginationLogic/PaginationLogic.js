@@ -1,5 +1,5 @@
 import React from "react";
-import "../MainRoot/MainRoot.css";
+import "../PaginationLogic/PaginationLogic.css";
 
 export default function PaginationLogic({
   currentPage,
